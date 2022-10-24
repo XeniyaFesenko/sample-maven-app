@@ -10,7 +10,7 @@ Parameters:
     Default: XeniyaFesenko
   GithubRepo:
     Type: String
-    Default: Fargate-ECSCluster-Cloudformation
+    Default: sample-maven-app
   GithubBranch:
     Type: String
     Default: master
