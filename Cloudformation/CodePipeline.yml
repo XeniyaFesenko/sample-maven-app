@@ -85,7 +85,7 @@ Resources:
         Image: aws/codebuild/standard:4.0
         ImagePullCredentialsType: CODEBUILD
         PrivilegedMode: True
-        Type: UBUNTU_CONTAINER
+        Type: LINUX_CONTAINER
         EnvironmentVariables:
           - Name: ECR_REPOSITORY_URI
             Value: !Join [ ".", [ !Ref "AWS::AccountId", "dkr.ecr", !Ref "AWS::Region", !Join [ "/", [ "amazonaws.com", !Ref "ECRRepository" ] ] ] ]
