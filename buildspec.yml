@@ -26,17 +26,17 @@ phases:
       - echo Building the Docker image...
       - echo $REPOSITORY_URI
       - ls -ltr 
-      - docker build -t 452887037656.dkr.ecr.ap-south-1.amazonaws.com/arvind-demo:latest .
-     # - docker build -t $REPOSITORY_URI:latest .
-     # - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
-      - docker tag 452887037656.dkr.ecr.ap-south-1.amazonaws.com/arvind-demo:latest 452887037656.dkr.ecr.ap-south-1.amazonaws.com/arvind-demo:$IMAGE_TAG   
+     #- docker build -t 452887037656.dkr.ecr.ap-south-1.amazonaws.com/arvind-demo:latest .
+      - docker build -t $REPOSITORY_URI:latest .
+      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+     #- docker tag 452887037656.dkr.ecr.ap-south-1.amazonaws.com/arvind-demo:latest 452887037656.dkr.ecr.ap-south-1.amazonaws.com/arvind-demo:$IMAGE_TAG   
   post_build:
     commands:
       - echo Build completed on date
       - echo Pushing the Docker images...
       - docker push 452887037656.dkr.ecr.ap-south-1.amazonaws.com/arvind-demo:latest
-      #- docker push $REPOSITORY_URI:latest
-      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - docker push $REPOSITORY_URI:latest
+      #- docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
       - printf '[{"name":"%s","imageUri":"%s"}]' $SERVICE_NAME $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json 
 cache:
