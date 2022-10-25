@@ -34,7 +34,7 @@ phases:
     commands:
       - echo Build completed on date
       - echo Pushing the Docker images...
-      - docker push 452887037656.dkr.ecr.ap-south-1.amazonaws.com/arvind-demo:latest
+      #- docker push 452887037656.dkr.ecr.ap-south-1.amazonaws.com/arvind-demo:latest
       - docker push $REPOSITORY_URI:latest
       #- docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
