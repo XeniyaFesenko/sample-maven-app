@@ -23,16 +23,18 @@ phases:
       - mvn install
       - echo Start Maven build
       - mvn clean package
+      - echo Build started on `date`
       - echo Building the Docker image...
       - echo $REPOSITORY_URI
       - ls -ltr 
-      - docker build -t 452887037656.dkr.ecr.ap-east-1.amazonaws.com/arvind-demo:latest .
-      - docker tag 452887037656.dkr.ecr.ap-east-1.amazonaws.com/arvind-demo:latest 452887037656.dkr.ecr.ap-south-1.amazonaws.com/arvind-demo:$IMAGE_TAG   
+      - docker build -t $ECR_REPOSITORY_URI:latest .
+      - docker tag $ECR_REPOSITORY_URI:latest $ECR_REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
       - echo Build completed on date
       - echo Pushing the Docker images...
-      - docker push 452887037656.dkr.ecr.ap-east-1.amazonaws.com/arvind-demo:latest
+      - docker push $ECR_REPOSITORY_URI:latest
+      - docker push $ECR_REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
       - printf '[{"name":"%s","imageUri":"%s"}]' $SERVICE_NAME $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json 
 cache:
