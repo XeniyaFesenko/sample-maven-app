@@ -37,7 +37,7 @@ phases:
       - echo Pushing the Docker images...
       - docker push 858855954940.dkr.ecr.us-east-1.amazonaws.com/vac01cdrecr/800:latest
       #- docker push $REPOSITORY_URI:latest
-      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      #- docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
       - printf '[{"name":"%s","imageUri":"%s"}]' $SERVICE_NAME $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json 
 cache:
