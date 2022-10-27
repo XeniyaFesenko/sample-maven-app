@@ -1,4 +1,4 @@
-FROM openjdk:8
+FROM public.ecr.aws/b5i1t1m4/openjdk8:latest
 
 #Define environment variables
 ENV MULE_HOME=/opt/mule
