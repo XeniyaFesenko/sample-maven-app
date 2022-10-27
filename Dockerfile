@@ -16,7 +16,7 @@ RUN apt-get update \
 
 
 # EXPOSED Application Port
-EXPOSE 8080
+EXPOSE 80
 
 # Copy application files
 COPY ./target/*.jar ${MULE_HOME}/apps
